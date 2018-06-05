@@ -41,4 +41,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="342dp"
+        android:layout_height="135dp"
+        android:fontFamily="casual"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puns"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="316dp"
+        android:layout_height="132dp"
+        android:fontFamily="casual"
+        android:textAlignment="center"
+        android:textColor="#ffc90e"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puns"
+        app:layout_constraintVertical_bias="0.661" />
 </android.support.constraint.ConstraintLayout>
