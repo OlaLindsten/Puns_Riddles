@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Puns_Riddles</string>
+    <string name="Riddles">Gåtor</string>
+    <string name="Puns">Vitsar</string>
 </resources>
