@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
     public void getPun(View view){
         final TextView punView = findViewById(R.id.question);
         final TextView answerView = findViewById(R.id.answer);
+        punView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         punView.setText(setPunQuestion(0));
         answerView.setText("");
         isPun = true;
@@ -40,6 +42,7 @@ public class MainActivity extends Activity {
     public void getRiddle(View view){
         final TextView riddleView = findViewById(R.id.question);
         final TextView answerView = findViewById(R.id.answer);
+        riddleView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         riddleView.setText(setRiddleQuestion(0));                             //Get question
         answerView.setText("");
         isPun = false;
@@ -50,6 +53,7 @@ public class MainActivity extends Activity {
     public void getAnswer(View view){
         final TextView answerView = findViewById(R.id.answer);
         if(answerView.getText().equals("")){
+            answerView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
             if (isRiddle == true) {
                 answerView.setText(setRiddleQuestion(1));
             }else if(isPun == true){
