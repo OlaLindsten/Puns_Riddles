@@ -1,6 +1,7 @@
 package gustav.ola.puns_riddles;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -31,6 +32,10 @@ public class MainActivity extends Activity {
     public void getPun(View view){
         final TextView punView = findViewById(R.id.question);
         final TextView answerView = findViewById(R.id.answer);
+
+        setPunUnderline();
+        removeRiddleUnderline();
+
         punView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         punView.setText(setPunQuestion(0));
         answerView.setText("");
@@ -42,6 +47,10 @@ public class MainActivity extends Activity {
     public void getRiddle(View view){
         final TextView riddleView = findViewById(R.id.question);
         final TextView answerView = findViewById(R.id.answer);
+
+        setRiddleUnderline();
+        removePunUnderline();
+
         riddleView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         riddleView.setText(setRiddleQuestion(0));                             //Get question
         answerView.setText("");
@@ -66,6 +75,30 @@ public class MainActivity extends Activity {
                 getPun(view);
             }
         }
+    }
+
+    //Underline pun header
+    public void setPunUnderline(){
+        final TextView pun = findViewById(R.id.puns);
+        pun.setPaintFlags(pun.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+    }
+
+    //Remove underline from pun header
+    public void removePunUnderline(){
+        final TextView pun = findViewById(R.id.puns);
+        pun.setPaintFlags(0);
+    }
+
+    //Underline riddle header
+    public void setRiddleUnderline(){
+        final TextView riddle = findViewById(R.id.riddles);
+        riddle.setPaintFlags(riddle.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+    }
+
+    //Remove underline from riddle header
+    public void removeRiddleUnderline(){
+        final TextView riddle = findViewById(R.id.riddles);
+        riddle.setPaintFlags(0);
     }
 
     //Return question or answer for riddle
