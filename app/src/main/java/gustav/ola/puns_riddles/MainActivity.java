@@ -10,6 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
     boolean isPun = false;
     boolean isRiddle = false;
+    int counter = 0;                                    //Keep track of which question
+    int temp = 0;                                       //A variable to store counter in
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class MainActivity extends Activity {
     public void getRiddle(View view){
         final TextView riddleView = findViewById(R.id.question);
         final TextView answerView = findViewById(R.id.answer);
-        riddleView.setText("Gåta");
+        riddleView.setText(setQuestion(0));                             //Get question
         answerView.setText("");
         isPun = false;
         isRiddle = true;
@@ -46,7 +48,11 @@ public class MainActivity extends Activity {
     public void getAnswer(View view){
         final TextView answerView = findViewById(R.id.answer);
         if(answerView.getText().equals("")){
-            answerView.setText("Svar");
+            if (isRiddle == true) {
+                answerView.setText(setQuestion(1));
+            }else if(isPun == true){
+                answerView.setText("Svar");
+            }
         }else{
             if(isRiddle == true && isPun == false){
                 getRiddle(view);
@@ -54,5 +60,34 @@ public class MainActivity extends Activity {
                 getPun(view);
             }
         }
+    }
+
+    //Return question or answer
+    public String setQuestion(int index){           //Index 0 = question 1 = answer
+
+        int columns = 3;        //Questions
+        int rows = 2;           //Answers
+
+        String[][] riddles = new String[columns][rows];
+
+        riddles[0][0] = "På vilken väg går man tillbaka, men kommer ändå närmare målet?";
+        riddles[0][1] = "Hemvägen";
+
+        riddles[1][0] = "Vilka tanter är mest populära?";
+        riddles[1][1] = "Kontanter";
+
+        riddles[2][0] = "Om du har den, så vill du dela med dig av den. Men om du delar med dig av den, så har du den inte. Vad är det?";
+        riddles[2][1] = "En hemlighet";
+
+        if(counter < columns && index == 0){
+            temp = counter;
+        }else if(counter < columns - index && index == 1){
+            temp = counter;
+            counter++;
+        }else{
+            counter = 0;
+        }
+
+        return riddles[temp][index];
     }
 }
