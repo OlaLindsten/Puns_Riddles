@@ -35,8 +35,8 @@ public class MainActivity extends Activity {
 
         setPunUnderline();
         removeRiddleUnderline();
+        fadeIn(punView);
 
-        punView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         punView.setText(setPunQuestion(0));
         answerView.setText("");
         isPun = true;
@@ -50,8 +50,8 @@ public class MainActivity extends Activity {
 
         setRiddleUnderline();
         removePunUnderline();
+        fadeIn(riddleView);
 
-        riddleView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
         riddleView.setText(setRiddleQuestion(0));                             //Get question
         answerView.setText("");
         isPun = false;
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
     public void getAnswer(View view){
         final TextView answerView = findViewById(R.id.answer);
         if(answerView.getText().equals("")){
-            answerView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
+            fadeIn(answerView);
             if (isRiddle == true) {
                 answerView.setText(setRiddleQuestion(1));
             }else if(isPun == true){
@@ -75,6 +75,11 @@ public class MainActivity extends Activity {
                 getPun(view);
             }
         }
+    }
+
+    //Add animation fade in
+    public void fadeIn(View view){
+        view.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
     }
 
     //Underline pun header
